@@ -1,30 +1,38 @@
 from pathlib import Path
 from tkinter.filedialog import asksaveasfilename
+from tkinter.filedialog import askdirectory
 
-from directories import DIRECTORIES
 import writers
 
 def main():
-    input_directory = None
-    while not input_directory in DIRECTORIES:
-        input_directory = input('Which big PDF do want to create? Enter "ck", "idms", or "tomo": ')
+    input("Press Enter key to select a folder. The PDF documents in this folder (non-recursive) will be combined into a big PDF (sorted by filename).")
+    input_directory = askdirectory(mustexist=True)
+    if not input_directory:
+        return
+    else:
+        input_directory = Path(input_directory)
+
     get_filename_and_save(input_directory)
-    input("Press Enter key to exit")
+    input("Press Enter key to exit.")
     print("Cleaning up...") 
 
-def get_filename_and_save(input_directory: str):
-    print("Select save location...")
+def get_filename_and_save(input_directory: Path):
+    input("Press Enter key to select save location.")
     output_path = asksaveasfilename(
             defaultextension="pdf",
             filetypes=[("PDF files", "*.pdf"), ("All Files", "*.*")],
     )
     if not output_path:
         return
+    else:
+        output_path = Path(output_path)
+
     print("\nCreating big PDF. This might take a few minutes...")
-    writer, added_to_big_pdf = writers.create_writer(DIRECTORIES[input_directory])
-    writers.write_writer(writers.compress_writer(writer), added_to_big_pdf, Path(output_path))
+    writer, added_to_big_pdf = writers.create_writer(input_directory)
+    writers.write_writer(writer, added_to_big_pdf, output_path)
+    # writers.write_writer(writers.compress_writer(writer), added_to_big_pdf, output_path)      # compression in broken
     num_files = len(added_to_big_pdf)
-    print(f"\nBig PDF created. {num_files} work instructions included.")
+    print(f"\nBig PDF created. {num_files} PDFs included.")
 
 if __name__ == "__main__":
     main()

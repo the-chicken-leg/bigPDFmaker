@@ -4,11 +4,10 @@ from pathlib import Path
 
 def create_writer(glob_dir: Path):
     glob_sort = sorted(
-        glob_dir.rglob("*-SVC-*.pdf"),
-        key=lambda filepath: filepath.name
+        glob_dir.glob("*.pdf"),
+        key=lambda filepath: filepath.name.lower(),
     )
-    glob_dedup = {filepath.name: filepath for filepath in glob_sort}
-    glob_dedup.pop("C-SVC-00186 CK Pre-Upgrade Configuration Checklist, 8.x-9.x to 10.x.pdf", None)     # this file destroys everything
+    glob_dedup = {filepath.name: filepath for filepath in glob_sort}        # this doesn't do anything useful now, but would be useful for dedeplication for a future rglob use case
 
     writer = PdfWriter()
     added_to_big_pdf = []
