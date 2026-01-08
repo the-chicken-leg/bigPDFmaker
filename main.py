@@ -5,19 +5,26 @@ from tkinter.filedialog import askdirectory
 import writers
 
 def main():
-    input("Press Enter key to select a folder. The PDF documents in this folder (non-recursive) will be combined into a big PDF (sorted by filename).")
+    input("""Press Enter key to select a folder.
+
+The PDF documents in this folder (non-recursive) will be combined into a big PDF (sorted by filename).
+
+Bookmarks will be created for each document added to the big PDF.
+"""
+    )
     input_directory = askdirectory(mustexist=True)
     if not input_directory:
         return
     else:
         input_directory = Path(input_directory)
+        print(f"Selected folder: {input_directory}")
 
     get_filename_and_save(input_directory)
     input("Press Enter key to exit.")
     print("Cleaning up...") 
 
 def get_filename_and_save(input_directory: Path):
-    input("Press Enter key to select save location.")
+    input("\nPress Enter key to select save location.")
     output_path = asksaveasfilename(
             defaultextension="pdf",
             filetypes=[("PDF files", "*.pdf"), ("All Files", "*.*")],
@@ -26,6 +33,7 @@ def get_filename_and_save(input_directory: Path):
         return
     else:
         output_path = Path(output_path)
+        print(f"Selected save location: {output_path}")
 
     print("\nCreating big PDF. This might take a few minutes...")
     writer, added_to_big_pdf = writers.create_writer(input_directory)

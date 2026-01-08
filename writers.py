@@ -14,8 +14,10 @@ def create_writer(glob_dir: Path):
     # for filepath in islice(glob_dedup.values(), 10):        # use for testing slices
     for filepath in glob_dedup.values():
         try:
-            writer.append(fr"{str(filepath)}", import_outline=False)
-            added_to_big_pdf.append(str(filepath.name) + "\n")
+            current_page = writer.get_num_pages()
+            writer.append(filepath, import_outline=False)
+            writer.add_outline_item(title=filepath.name, page_number=current_page)
+            added_to_big_pdf.append(filepath.name + "\n")
         except:
             print(f"{filepath.name} is not a nice file. It was not added to big PDF.")
             continue
