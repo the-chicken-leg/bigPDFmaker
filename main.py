@@ -5,12 +5,11 @@ from tkinter.filedialog import askdirectory
 import writers
 
 def main():
-    input("""Press Enter key to select a folder.
-
-The PDF documents in this folder (non-recursive) will be combined into a big PDF (sorted by filename).
+    input("""This program combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename).
 
 Bookmarks will be created for each document added to the big PDF.
-"""
+
+Press Enter key to select a folder."""
     )
     input_directory = askdirectory(mustexist=True)
     if not input_directory:
