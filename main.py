@@ -37,7 +37,7 @@ def get_filename_and_save(input_directory: Path):
     print("\nCreating big PDF. This might take a few minutes...")
     writer, added_to_big_pdf = writers.create_writer(input_directory)
     writers.write_writer(writer, added_to_big_pdf, output_path)
-    # writers.write_writer(writers.compress_writer(writer), added_to_big_pdf, output_path)      # compression in broken
+    # writers.write_writer(writers.compress_writer(writer), added_to_big_pdf, output_path)      # compression broken
     num_files = len(added_to_big_pdf)
     print(f"\nBig PDF created. {num_files} PDFs included.")
 
