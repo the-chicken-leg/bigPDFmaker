@@ -5,7 +5,8 @@ from tkinter.filedialog import askdirectory
 import writers
 
 def main():
-    input("""This program combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename).
+    input(
+"""This program combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename).
 
 Bookmarks will be created for each document added to the big PDF.
 
