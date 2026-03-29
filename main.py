@@ -17,11 +17,9 @@ Press Enter key to select a folder."""
         return
     else:
         input_directory = Path(input_directory)
-        print(f"Selected folder: {input_directory}")
+        print(f"Selected folder:        {input_directory}")
 
     get_filename_and_save(input_directory)
-    input("Press Enter key to exit.")
-    print("Cleaning up...") 
 
 def get_filename_and_save(input_directory: Path):
     input("\nPress Enter key to select save location.")
