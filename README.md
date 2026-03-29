@@ -31,7 +31,7 @@ git clone https://github.com/the-chicken-leg/bigPDFmaker
 Set-Location .\bigPDFmaker\
 ```
 
-5. Run using uv. At the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent run will be faster:
+5. Run using uv. On the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent runs will be faster:
 
 ```powershell
 uv run main.py
