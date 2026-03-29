@@ -1,7 +1,7 @@
 [project]
 name = "bigpdfmaker"
 version = "0.1.0"
-description = "Add your description here"
+description = "Combine PDF documents from a folder (non-recursively) into a big PDF (sorted by filename)."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
