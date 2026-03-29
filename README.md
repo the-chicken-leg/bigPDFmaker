@@ -4,6 +4,12 @@ This Python CLI program combines PDF documents from a folder (non-recursively) i
 
 Bookmarks will be created for each document added to the big PDF.
 
+## Usage
+
+Run the main.py file (detailed instructions below) and follow the prompts to select a folder and save location.
+
+![powershell](screenshots/powershell.png)
+
 ## Run on Windows with uv
 
 1. Install uv using PowerShell (see https://docs.astral.sh/uv/getting-started/installation/ for full instructions):
