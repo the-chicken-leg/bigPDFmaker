@@ -28,6 +28,8 @@ Set-Location C:\Users\micha\workspace\github.com\the-chicken-leg\
 
 ```powershell
 git clone https://github.com/the-chicken-leg/bigPDFmaker
+```
+```powershell
 Set-Location .\bigPDFmaker\
 ```
 
