@@ -18,8 +18,8 @@ def create_writer(glob_dir: Path):
             writer.append(filepath, import_outline=False)
             writer.add_outline_item(title=filepath.name, page_number=current_page)
             added_to_big_pdf.append(filepath.name + "\n")
-        except:
-            print(f"{filepath.name} is not a nice file. It was not added to big PDF.")
+        except Exception as e:
+            print(f"Error adding {filepath.name} to big PDF: {e}")
             continue
 
     return writer, added_to_big_pdf
