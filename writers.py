@@ -1,25 +1,25 @@
 from pypdf import PdfWriter
 from pathlib import Path
-# from itertools import islice      # use for testing slices
+# from itertools import islice    # use for testing slices
 
 def create_writer(glob_dir: Path):
     glob_sort = sorted(
         glob_dir.glob("*.pdf"),
         key=lambda filepath: filepath.name.lower(),
     )
-    glob_dedup = {filepath.name: filepath for filepath in glob_sort}        # this doesn't do anything useful now, but would be useful for dedeplication for a future rglob use case
+    glob_dedup = {filepath.name: filepath for filepath in glob_sort}    # this doesn't do anything useful now, but would be useful for dedeplication for a future rglob use case
 
     writer = PdfWriter()
     added_to_big_pdf = []
-    # for filepath in islice(glob_dedup.values(), 10):        # use for testing slices
+    # for filepath in islice(glob_dedup.values(), 10):    # use for testing slices
     for filepath in glob_dedup.values():
         try:
             current_page = writer.get_num_pages()
             writer.append(filepath, import_outline=False)
             writer.add_outline_item(title=filepath.name, page_number=current_page)
             added_to_big_pdf.append(filepath.name + "\n")
-        except Exception as e:
-            print(f"Error adding {filepath.name} to big PDF: {e}")
+        except Exception as err:
+            print(f"Error adding {filepath.name} to big PDF: {err}")
             continue
 
     return writer, added_to_big_pdf
