@@ -6,13 +6,11 @@ Bookmarks will be created for each document added to the big PDF.
 
 ## Usage
 
-Run the main.py file (detailed instructions below) and follow the prompts to select a folder and save location.
-
 ![powershell](screenshots/powershell.png)
 
 ## Run on Windows with uv
 
-1. Install uv using PowerShell (see https://docs.astral.sh/uv/getting-started/installation/ for full instructions):
+1. Install uv using PowerShell (full instructions here: https://docs.astral.sh/uv/getting-started/installation):
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
@@ -24,23 +22,14 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 uv --version
 ```
 
-3. Navigate to your workspace directory. Below is an example, but you can use whichever directory you want:
+3. Download script file:
 
 ```powershell
-Set-Location C:\Users\micha\workspace\github.com\the-chicken-leg\
+curl -L -O https://github.com/the-chicken-leg/bigPDFmaker/blob/main/bigPDFmaker.py?raw=true
 ```
 
-4. Clone github repository and navigate to directory:
+4. Run using uv. On the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent runs will be faster:
 
 ```powershell
-git clone https://github.com/the-chicken-leg/bigPDFmaker
-```
-```powershell
-Set-Location .\bigPDFmaker\
-```
-
-5. Run using uv. On the first run, uv will download the appropriate python version, create a venv, and install dependencies, which might take some time. Subsequent runs will be faster:
-
-```powershell
-uv run main.py
+uv run .\bigPDFmaker.py
 ```

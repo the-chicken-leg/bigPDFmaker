@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "pypdf[full]>=6.9.2",
+# ]
+# ///
 from pathlib import Path
 from tkinter.filedialog import asksaveasfilename
 from tkinter.filedialog import askdirectory
