@@ -31,17 +31,11 @@ def main():
     output_path = Path(output_path)
     print(f"Selected save location: {output_path}\n")
 
-    # create big PDF
+    # create writer
     print("Creating big PDF. This might take a few minutes...")
-    writer, added_to_big_pdf = create_writer(input_directory)
-    write_writer(writer, added_to_big_pdf, output_path)
-    # writers.write_writer(writers.compress_writer(writer), added_to_big_pdf, output_path)    # compression broken
-    num_files = len(added_to_big_pdf)
-    print(f"Big PDF created. {num_files} PDFs included.")
 
-def create_writer(glob_dir: Path):
     glob_sort = sorted(
-        glob_dir.glob("*.pdf"),
+        input_directory.glob("*.pdf"),
         key=lambda filepath: filepath.name.lower(),
     )
     glob_dedup = {filepath.name: filepath for filepath in glob_sort}    # this doesn't do anything useful now, but would be useful for dedeplication for a future rglob use case
@@ -59,22 +53,21 @@ def create_writer(glob_dir: Path):
             print(f"Error adding {filepath.name} to big PDF: {err}")
             continue
 
-    return writer, added_to_big_pdf
+    # compress writer (broken)
+    # for page in writer.pages:
+    #     page.compress_content_streams(level=9)
+    # writer.compress_identical_objects(remove_identicals=True, remove_orphans=True)
 
-def compress_writer(writer: PdfWriter):
-    for page in writer.pages:
-        page.compress_content_streams(level=9)
-    writer.compress_identical_objects(remove_identicals=True, remove_orphans=True)
-    
-    return writer
-
-def write_writer(writer: PdfWriter, added_to_big_pdf: list, pdf_output_path: Path):
-    with pdf_output_path.open(mode="wb") as output_file:
+    # write writer
+    with output_path.open(mode="wb") as output_file:
         writer.write(output_file)
-
-    contents_output_path = pdf_output_path.parent / f"{pdf_output_path.name}_contents.txt"
+        
+    contents_output_path = output_path.parent / f"{output_path.name}_contents.txt"
     with contents_output_path.open(mode="w", encoding="utf-8") as output_file:
         output_file.writelines(added_to_big_pdf)
+
+    num_files = len(added_to_big_pdf)
+    print(f"Big PDF created. {num_files} PDFs included.")
 
 if __name__ == "__main__":
     main()
