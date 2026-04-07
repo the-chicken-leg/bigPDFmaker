@@ -1,6 +1,6 @@
 # bigPDFmaker
 
-These Python scripts help manipulate PDFs.
+These Python scripts manipulate PDFs.
 
 combine_pdfs.py combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename). Bookmarks will be created for each document added to the big PDF.
 
