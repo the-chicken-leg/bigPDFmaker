@@ -4,30 +4,31 @@
 #     "pypdf[full]>=6.9.2",
 # ]
 # ///
+
 from pathlib import Path
-from tkinter.filedialog import asksaveasfilename
 from tkinter.filedialog import askdirectory
+from tkinter.filedialog import asksaveasfilename
 # from itertools import islice    # use for testing slices
 
 from pypdf import PdfWriter
 
 # get input directory
-input_directory = None
-while not input_directory:
-    input("Press Enter key to select a folder.")
-    input_directory = askdirectory(mustexist=True)
-input_directory = Path(input_directory)
+input_directory_str = ""
+while not input_directory_str:
+    input("\nPress Enter key to select a folder.")
+    input_directory_str = askdirectory(mustexist=True)
+input_directory = Path(input_directory_str)
 print(f"Selected folder:        {input_directory}\n")
 
 # get output path
-output_path = None
-while not output_path:
+output_path_str = ""
+while not output_path_str:
     input("Press Enter key to select save location.")
-    output_path = asksaveasfilename(
+    output_path_str = asksaveasfilename(
             defaultextension="pdf",
             filetypes=[("PDF files", "*.pdf"), ("All Files", "*.*")],
     )
-output_path = Path(output_path)
+output_path = Path(output_path_str)
 print(f"Selected save location: {output_path}\n")
 
 # create writer
@@ -50,7 +51,6 @@ for filepath in glob_dedup.values():
         added_to_big_pdf.append(filepath.name + "\n")
     except Exception as err:
         print(f"Error adding {filepath.name} to big PDF: {err}")
-        continue
 
 # compress writer (broken)
 # for page in writer.pages:
@@ -66,4 +66,4 @@ with contents_output_path.open(mode="w", encoding="utf-8") as output_file:
     output_file.writelines(added_to_big_pdf)
 
 num_files = len(added_to_big_pdf)
-print(f"Big PDF created. {num_files} PDFs included.")
+print(f"Big PDF created. {num_files} PDFs included.\n")
