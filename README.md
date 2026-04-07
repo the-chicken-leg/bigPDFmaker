@@ -1,8 +1,12 @@
 # bigPDFmaker
 
-This Python script combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename).
+These Python scripts help manipulate PDFs.
 
-Bookmarks will be created for each document added to the big PDF.
+combine_pdfs.py combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename). Bookmarks will be created for each document added to the big PDF.
+
+extract_pages.py copies selected pages from an existing PDF and creates a new PDF. The original PDF is not modified.
+
+Using these scripts together allows endless mish-mashing of pages from multiple PDFs.
 
 ## Usage
 
