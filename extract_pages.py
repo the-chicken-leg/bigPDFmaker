@@ -25,7 +25,7 @@ def main():
 
     # enter pages to extract
     while True:
-        pages = input(pages_prompt)
+        pages = input(PAGES_PROMPT)
         try:
             page_list = parse_pages(pages)
             break
@@ -59,7 +59,7 @@ def main():
         writer.write(output_file)
     print(f"New PDF created. {num_pages} pages included.\n")
 
-pages_prompt = """
+PAGES_PROMPT = """
 Which pages should be extracted and combined? The original PDF will not be modified. 
 
 You can enter:
