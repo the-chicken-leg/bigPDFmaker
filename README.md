@@ -15,12 +15,9 @@ Using these scripts together allows endless mish-mashing of pages from multiple 
 usage: combine_pdfs.py [-h] [-b] [-m]
 
 options:
-
--h, --help       show this help message and exit
-
--b, --bookmarks  create PDF bookmarks
-
--m, --manifest   create .txt manifest
+    -h, --help       show this help message and exit
+    -b, --bookmarks  create PDF bookmarks
+    -m, --manifest   create .txt manifest
 
 ![combine_pdfs](screenshots/combine_pdfs_pwsh.png)
 
