@@ -12,17 +12,12 @@ Using these scripts together allows endless mish-mashing of pages from multiple 
 
 ### combine_pdfs.py
 
-usage: combine_pdfs.py [-h] [-b] [-m]
+![combine_pdfs-h](screenshots/combine_pdfs-h.png)
 
-options:\
-    -h, --help       show this help message and exit\
-    -b, --bookmarks  create PDF bookmarks\
-    -m, --manifest   create .txt manifest
-
-![combine_pdfs](screenshots/combine_pdfs_pwsh.png)
+![combine_pdfs](screenshots/combine_pdfs-pwsh.png)
 
 ### extract_pages.py
-![extract_pages](screenshots/extract_pages_pwsh.png)
+![extract_pages](screenshots/extract_pages-pwsh.png)
 
 ## Run on Windows with uv
 
