@@ -47,7 +47,7 @@ while not output_path_str:
 output_path = Path(output_path_str)
 print(f"Selected save location: {output_path}\n")
 
-# create writer
+# add PDFs to writer
 print("Creating big PDF...")
 
 glob_sort = sorted(
