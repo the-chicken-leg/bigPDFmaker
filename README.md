@@ -2,7 +2,7 @@
 
 These Python scripts manipulate PDFs.
 
-combine_pdfs.py combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename).
+combine_pdfs.py combines PDF documents from a folder (non-recursively) into a big PDF (sorted by filename) - the original PDFs are not modified.
 
 extract_pages.py copies selected pages from an existing PDF and creates a new PDF - the original PDF is not modified.
 
